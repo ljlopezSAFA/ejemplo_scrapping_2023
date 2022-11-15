@@ -9,7 +9,7 @@ def web_scraping():
     html = requests.get("https://www.comuniazo.com/comunio-apuestas/jugadores")
 
     #Paso 2 -> Convertir nuestro html en una sopa
-    soup = bs4.BeautifulSoup(html.content)
+    soup = bs4.BeautifulSoup(html.content,"html.parser")
 
 
     #Paso 3 -> Crearnos un diccionario con la estructura de datos
@@ -58,10 +58,11 @@ def web_scraping():
 
         #Añadir el jugador a mi lista de jugadores
         lista_jugadores.append(jugador)
-        print(jugador)
+
+    print("Scraping finalizado")
+
+
+    return lista_jugadores
 
 
 
-
-
-web_scraping()
