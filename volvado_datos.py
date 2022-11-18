@@ -34,5 +34,31 @@ def insertar_datos():
     print("Datos volcados correctamente")
 
 
+def consultar_datos():
+    conexion = db.connect(host='localhost',
+                          port=3306,
+                          database='comuniazo',
+                          user='root',
+                          password='1234',
+                          autocommit=True)
 
-insertar_datos()
+    cursor = conexion.cursor()
+
+    cursor.execute("select * from jugador")
+
+    list_jugador = []
+
+    for row in cursor.fetchall():
+        jugador = dict()
+        jugador["id"] = row[0]
+        jugador["posicion"] = row[1]
+        jugador["equipo"] = row[2]
+        jugador["nombre"] = row[3]
+        jugador["puntos_totales"] = row[4]
+        jugador["valor"] = row[5]
+        list_jugador.append(jugador)
+
+
+    return list_jugador
+
+
