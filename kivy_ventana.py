@@ -3,7 +3,7 @@ from kivymd.uix.screen import Screen
 from kivy.uix.button import Button
 from kivymd.uix.button import *
 from kivymd.uix.gridlayout import GridLayout
-from volvado_datos import insertar_datos
+from metodos_bbdd import insertar_datos
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.datatables import MDDataTable
