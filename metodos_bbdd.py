@@ -34,33 +34,29 @@ def insertar_datos():
     print("Datos volcados correctamente")
 
 
-# def consultar_datos():
-#     conexion = db.connect(host='localhost',
-#                           port=3306,
-#                           database='comuniazo',
-#                           user='root',
-#                           password='1234',
-#                           autocommit=True)
-#
-#     cursor = conexion.cursor()
-#
-#     cursor.execute("select * from jugador")
-#
-#     list_jugador = []
-#
-#     for row in cursor.fetchall():
-#         jugador = dict()
-#         jugador["id"] = row[0]
-#         jugador["posicion"] = row[1]
-#         jugador["equipo"] = row[2]
-#         jugador["nombre"] = row[3]
-#         jugador["puntos_totales"] = row[4]
-#         jugador["valor"] = row[5]
-#         list_jugador.append(jugador)
-#
-#
-#     return list_jugador
+def insertar(nuevo_jugador):
 
+    conexion = db.connect(host='localhost',
+                          port=3306,
+                          database='comuniazo',
+                          user='root',
+                          password='1234',
+                          autocommit=True)
+
+
+    cursor = conexion.cursor()
+
+    script_insert = "insert into jugador (posicion, equipo, nombre , puntos_totales, valor)" \
+                    "values (%s,%s,%s,%s,%s)"
+
+
+    cursor.execute(script_insert,(nuevo_jugador["pos"],
+                                  "https://sin_equipo.es",
+                                  nuevo_jugador["nombre"],
+                                  nuevo_jugador["puntos"],
+                                  nuevo_jugador["valor"]))
+
+    print("Nuevo Jugador creado con éxito")
 
 
 def consultar_datos():
